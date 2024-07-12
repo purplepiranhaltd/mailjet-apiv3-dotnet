@@ -18,7 +18,9 @@
 
 ## Overview
 
-Welcome to the [Mailjet][mailjet] official .NET API wrapper!
+Welcome to the [Mailjet][mailjet] .NET API wrapper!
+
+This is an unofficial version based on the official version.
 
 Check out all the resources and .NET code examples in the official [Mailjet Documentation][csharp_documentation].
 
