@@ -35,7 +35,7 @@ namespace Mailjet.Client.TransactionalEmails
         private string _urlTags;
 
         private Dictionary<string, string> _headers;
-        private IDictionary<string, Variable> _variables;
+        private VariableDictionary _variables;
 
         /// <summary>
         /// The email subject line
@@ -399,7 +399,7 @@ namespace Mailjet.Client.TransactionalEmails
         /// Enter the information in the template text / HTML part by using the [[var:{var_name}]] format.
         /// Equivalent of using X-MJ-Vars header through SMTP.
         /// </summary>
-        public TransactionalEmailBuilder WithVariables(IDictionary<string, Variable> variables)
+        public TransactionalEmailBuilder WithVariables(VariableDictionary variables)
         {
             _variables = variables;
 
