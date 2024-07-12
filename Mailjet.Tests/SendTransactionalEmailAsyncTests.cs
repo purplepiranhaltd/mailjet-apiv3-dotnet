@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -82,12 +83,20 @@ namespace Mailjet.Tests
                 })
                 .Respond("application/json", "{}");
 
+            var variables = new Dictionary<string, object>();
+            variables.Add("settings", new { 
+                Day = "Friday",
+                Number1 = 4,
+                Number2 = 0,
+            });
+
             var email = new TransactionalEmailBuilder()
                 .WithFrom(new SendContact("pilot@mailjet.com", "Your Mailjet Pilot"))
                 .WithHtmlPart("<h3>Dear passenger, welcome to Mailjet!</h3><br />May the delivery force be with you!")
                 .WithSubject("Your email flight plan!")
                 .WithTextPart("Dear passenger, welcome to Mailjet! May the delivery force be with you!")
                 .WithTo(new SendContact("passenger@mailjet.com", "Passenger 1"))
+                .WithVariables(variables)
                 .Build();
 
             // act

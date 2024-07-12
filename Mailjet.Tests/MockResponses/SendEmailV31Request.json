@@ -15,7 +15,14 @@
           "Email": "passenger@mailjet.com",
           "Name": "Passenger 1"
         }
-      ]
+      ],
+      "Variables": {
+        "settings": {
+          "Day": "Friday",
+          "Number1": 4,
+          "Number2":  0
+        }
+      }
     }
   ]
 }
