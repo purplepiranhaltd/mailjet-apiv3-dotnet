@@ -1,4 +1,8 @@
-﻿namespace Mailjet.Client.TransactionalEmails.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Mailjet.Client.TransactionalEmails.Models
 {
     public class Variable
     {
@@ -8,9 +12,5 @@
         }
 
         public object Value { get; private set; }
-
-        //public static implicit operator Dictionary<string, object>(Dictionary<string, Variable> keyValuePairs) => {}
     }
-
-    
 }
