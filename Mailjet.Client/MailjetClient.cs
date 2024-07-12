@@ -1,6 +1,7 @@
 ﻿using Mailjet.Client.Exceptions;
 using Mailjet.Client.Helpers;
 using Mailjet.Client.Resources;
+using Mailjet.Client.Serialization;
 using Mailjet.Client.TransactionalEmails;
 using Mailjet.Client.TransactionalEmails.Response;
 using Newtonsoft.Json;
@@ -19,15 +20,6 @@ namespace Mailjet.Client
     /// </summary>
     public class MailjetClient : IMailjetClient
     {
-        private static readonly JsonSerializer Serializer = JsonSerializer.CreateDefault(new JsonSerializerSettings
-        {
-            DefaultValueHandling = DefaultValueHandling.Ignore,
-            Converters = new List<JsonConverter>
-            {
-                new Newtonsoft.Json.Converters.StringEnumConverter()
-            }
-        });
-
         private HttpClient _httpClient;
 
         public MailjetClient(string apiKey, string apiSecret, HttpMessageHandler httpMessageHandler = null)
@@ -150,7 +142,7 @@ namespace Mailjet.Client
             var clientRequest = new MailjetRequest
             {
                 Resource = SendV31.Resource,
-                Body = JObject.FromObject(request, Serializer)
+                Body = JObject.FromObject(request, JsonSerializers.MailjetJsonSerializer)
             };
 
             MailjetResponse clientResponse = await PostAsync(clientRequest)

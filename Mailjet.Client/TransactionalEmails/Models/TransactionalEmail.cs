@@ -1,4 +1,5 @@
-﻿using Mailjet.Client.JsonConverters;
+﻿using Mailjet.Client.Serialization;
+using Mailjet.Client.TransactionalEmails.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -34,8 +35,6 @@ namespace Mailjet.Client.TransactionalEmails
         public string URLTags { get; set; }
 
         public Dictionary<string, string> Headers { get; set; }
-
-        [JsonProperty(ItemConverterType = typeof(VariableConverter))]
-        public IDictionary<string, object> Variables { get; set; }
+        public IDictionary<string, Variable> Variables { get; set; }
     }
 }

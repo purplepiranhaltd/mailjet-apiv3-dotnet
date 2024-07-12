@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Mailjet.Client.Exceptions;
+using Mailjet.Client.TransactionalEmails.Models;
 
 namespace Mailjet.Client.TransactionalEmails
 {
@@ -34,7 +35,7 @@ namespace Mailjet.Client.TransactionalEmails
         private string _urlTags;
 
         private Dictionary<string, string> _headers;
-        private IDictionary<string, object> _variables;
+        private IDictionary<string, Variable> _variables;
 
         /// <summary>
         /// The email subject line
@@ -383,10 +384,10 @@ namespace Mailjet.Client.TransactionalEmails
         /// Enter the information in the template text / HTML part by using the [[var:{var_name}]] format.
         /// Equivalent of using X-MJ-Vars header through SMTP.
         /// </summary>
-        public TransactionalEmailBuilder WithVariable(string variableName, object variableValue)
+        public TransactionalEmailBuilder WithVariable(string variableName, Variable variableValue)
         {
             if (_variables == null)
-                _variables = new Dictionary<string, object>();
+                _variables = new Dictionary<string, Variable>();
 
             _variables.Add(variableName, variableValue);
 
@@ -398,7 +399,7 @@ namespace Mailjet.Client.TransactionalEmails
         /// Enter the information in the template text / HTML part by using the [[var:{var_name}]] format.
         /// Equivalent of using X-MJ-Vars header through SMTP.
         /// </summary>
-        public TransactionalEmailBuilder WithVariables(IDictionary<string, object> variables)
+        public TransactionalEmailBuilder WithVariables(IDictionary<string, Variable> variables)
         {
             _variables = variables;
 

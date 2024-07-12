@@ -1,5 +1,6 @@
 ﻿using Mailjet.Client.Exceptions;
 using Mailjet.Client.TransactionalEmails;
+using Mailjet.Client.TransactionalEmails.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
@@ -12,9 +13,9 @@ namespace Mailjet.Tests
         public void BuildTransactionEmail_WhenNoTemplateIdAndTemplateProvided_ReturnsEmailObject()
         {
             // arrange
-            var variables = new Dictionary<string, object>
+            var variables = new Dictionary<string, Variable>
             {
-                { "day", "Friday" }
+                { "day", new Variable("Friday") }
             };
 
             // act
@@ -35,9 +36,9 @@ namespace Mailjet.Tests
         public void BuildTransactionEmail_WhenTemplateIdProvided_ReturnsEmailObject()
         {
             // arrange
-            var variables = new Dictionary<string, object>
+            var variables = new Dictionary<string, Variable>
             {
-                { "day", "Friday" }
+                { "day", new Variable("Friday") }
             };
 
             // act
@@ -58,9 +59,9 @@ namespace Mailjet.Tests
         public void BuildTransactionEmail_WhenNoFromAddressAndTemplateIdProvided__ReturnsEmailObject()
         {
             // arrange
-            var variables = new Dictionary<string, object>
+            var variables = new Dictionary<string, Variable>
             {
-                { "day", "Friday" }
+                { "day", new Variable("Friday") }
             };
 
             // act
@@ -81,9 +82,9 @@ namespace Mailjet.Tests
         public void BuildTransactionEmail_WhenNoFromAddress_ThrowsException()
         {
             // arrange
-            var variables = new Dictionary<string, object>
+            var variables = new Dictionary<string, Variable>
             {
-                { "day", "Friday" }
+                { "day", new Variable("Friday") }
             };
 
             // act

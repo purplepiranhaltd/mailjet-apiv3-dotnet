@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Mailjet.Client;
 using Mailjet.Client.TransactionalEmails;
+using Mailjet.Client.TransactionalEmails.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using RichardSzalay.MockHttp;
@@ -83,12 +84,12 @@ namespace Mailjet.Tests
                 })
                 .Respond("application/json", "{}");
 
-            var variables = new Dictionary<string, object>();
-            variables.Add("settings", new { 
+            var variables = new Dictionary<string, Variable>();
+            variables.Add("settings", new Variable(new { 
                 Day = "Friday",
                 Number1 = 4,
                 Number2 = 0,
-            });
+            }));
 
             var email = new TransactionalEmailBuilder()
                 .WithFrom(new SendContact("pilot@mailjet.com", "Your Mailjet Pilot"))
